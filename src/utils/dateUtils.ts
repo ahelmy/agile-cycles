@@ -1,4 +1,4 @@
-import { addDays, addWeeks, startOfYear, getQuarter, isWithinInterval } from 'date-fns';
+import { addDays, getDay, addWeeks, startOfYear, getQuarter, isWithinInterval } from 'date-fns';
 import { Cycle, Quarter, Sprint } from '../types';
 
 export const isCurrentSprint = (sprint: Sprint): boolean => {
