@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { format } from 'date-fns';
-import { Quarter, Cycle, Sprint } from '../types';
+import { Quarter, Cycle } from '../types';
 import { isCurrentCycle, isCurrentSprint, updateCycleSprints } from '../utils/dateUtils';
 
 interface CalendarProps {
