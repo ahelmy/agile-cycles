@@ -34,7 +34,16 @@ export const calculateSprintsForDuration = (cycleStartDate: Date, cycleEndDate: 
 };
 
 export const generateYearlyPlan = (year: number) => {
-  const startDate = startOfYear(new Date(year, 0, 1));
+  let startDate = startOfYear(new Date(year, 0, 1));
+
+  // Ensure startDate is a weekday (Monday to Friday)
+  const dayOfWeek = getDay(startDate); // 0 = Sunday, 6 = Saturday
+  if (dayOfWeek === 0) {
+    startDate = addDays(startDate, 1); // Move to Monday
+  } else if (dayOfWeek === 6) {
+    startDate = addDays(startDate, 2); // Move to Monday
+  }
+
   const cycles: Cycle[] = [];
   const quarters: Quarter[] = [];
 
@@ -72,6 +81,7 @@ export const generateYearlyPlan = (year: number) => {
 
   return { cycles, quarters };
 };
+
 
 export const updateCycleSprints = (cycle: Cycle, newSprintDuration: number): Cycle => {
   return {
